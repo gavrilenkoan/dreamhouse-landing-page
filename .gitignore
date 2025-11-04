@@ -1,2 +1,6 @@
+# Build outputs
 /style.css
 /style.css.map
+
+# macOS system files
+.DS_Store

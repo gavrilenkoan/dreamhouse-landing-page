@@ -342,7 +342,6 @@ h1, h2 {
     .about-title {
         margin: 0 2rem;
         font-size: 32px;
-        font-weight: 700;
         margin-bottom: 16px;
     }
 
@@ -389,7 +388,6 @@ h1, h2 {
 
                 h3 {
                     font-size: 18px;
-                    font-weight: 700;
                     margin-bottom: 8px;
                     padding: 0 15px;
                 }
@@ -707,6 +705,10 @@ h1, h2 {
     /* ---------- ABOUT US ---------- */
     .about-us {
         padding: 60px 0;
+
+        .about-title {
+            font-size: 25px;
+        }
 
         .features {
             grid-template-columns: repeat(1, 1fr);
