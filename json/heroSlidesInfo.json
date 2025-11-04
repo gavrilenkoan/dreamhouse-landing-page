@@ -1,0 +1,14 @@
+[
+    {
+        "description": "Model house with large panoramic window and fireplace",
+        "material": "Aerated concrete",
+        "square": "134m²",
+        "price": "$120,000"
+    },
+    {
+        "description": "Model house with flat roof design and panoramic windows",
+        "material": "Reinforced concrete",
+        "square": "142m²",
+        "price": "$135,000"
+    }
+]
