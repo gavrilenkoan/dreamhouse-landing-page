@@ -441,6 +441,139 @@ h1, h2 {
     }
 }
 
+/* ---------- BESTSELLERS ---------- */
+.bestsellers {
+    padding: 5rem 0 4rem;
+    background-color: $white-color;
+
+    .bestsellers-header {
+        max-width: 1500px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-size: 32px;
+            color: $black-color;
+            margin: 0 2rem 1.5rem;
+        }
+
+        .bestsellers-buttons {
+            display: flex;
+            gap: 0.8rem;
+            margin: 0 2rem 1.5rem;
+
+            .scroll-btn {
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+                border: 1px solid $border-color;
+                background-color: $white-color;
+                color: $gold-color;
+                cursor: pointer;
+
+                &:hover {
+                    color: $black-color;
+                }
+
+                &:active {
+                    transform: scale(96%);
+                }
+            }
+        }
+    }
+
+    .bestsellers-container {
+        max-width: 1500px;
+        margin: 0 auto;
+        display: flex;
+        overflow-x: hidden;
+        touch-action: none;
+        gap: 2rem;
+        padding: 0 2rem 1rem;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .bestseller-card {
+            position: relative;
+            flex: 0 0 335px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: $black-color;
+            color: $white-color;
+            cursor: pointer;
+
+            img {
+                width: 100%;
+                height: 220px;
+                margin-bottom: -1rem; // todo
+            }
+
+            .bestseller-info {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 1rem;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+
+                h3 {
+                    font-size: 1.4rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .price {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    margin-bottom: 0.5rem;
+                }
+
+                .details {
+                    display: flex;
+                    gap: 1rem;
+                    font-size: 0.9rem;
+                    color: $white-color;
+
+                    i {
+                        margin-right: 0.3rem;
+                        color: $gold-color;
+                    }
+                }
+
+                .arrow-btn {
+                    position: absolute;
+                    bottom: 1rem;
+                    right: 1rem;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    border: none;
+                    background-color: rgba(255, 255, 255, 0.3);
+                    color: $white-color;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    transition: 0.3s ease;
+                    text-decoration: none;
+
+                    &:hover {
+                        background-color: $gold-color;
+                        color: $white-color;
+                    }
+
+                    &:active {
+                        transform: scale(96%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 @media screen and (max-width: 674px) {
 
     /* ---------- NAVBAR ---------- */
@@ -595,6 +728,49 @@ h1, h2 {
                     font-size: 12px;
                     margin-left: 0;
                     text-align: center;
+                }
+            }
+        }
+    }
+
+    /* ---------- BESTSELLERS ---------- */
+    .bestsellers {
+        padding: 60px 0;
+
+        .bestsellers-header {
+            justify-content: left;
+            
+            h2 {
+                font-size: 25px;
+            }
+
+            .bestsellers-buttons {
+                display: none;
+            }
+        }
+
+        .bestsellers-container {
+            display: flex;
+            flex-direction: column;
+
+            .bestseller-card {
+                flex: 0 0 auto;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    min-height: 250px;
+                    object-fit: cover;
+                    object-position: center;
+                    display: block; 
+                }
+
+                .bestseller-info .details {
+                    gap: 0.5rem;
+
+                    i {
+                        margin-right: 0.1rem;
+                    }
                 }
             }
         }

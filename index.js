@@ -66,3 +66,27 @@ function showHeroInfo(index) {
     heroSquare.textContent = heroSlidesInfo[index].square;
     heroPrice.textContent = heroSlidesInfo[index].price;
 }
+
+const bestsellerContainer = document.querySelector(".bestsellers-container");
+const btnPrev = document.querySelector(".scroll-btn.prev");
+const btnNext = document.querySelector(".scroll-btn.next");
+
+const scrollAmount = 367;
+let currentScroll = 0;
+let lastScroll = scrollAmount;
+
+btnNext.addEventListener("click", () => {
+
+    const maxScroll = bestsellerContainer.scrollWidth - bestsellerContainer.clientWidth;
+    currentScroll = Math.min(currentScroll + scrollAmount, maxScroll);
+
+    bestsellerContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+});
+
+btnPrev.addEventListener("click", () => {
+
+    let leftScroll = currentScroll % scrollAmount;
+    currentScroll = leftScroll ? currentScroll - leftScroll : currentScroll - scrollAmount;
+
+    bestsellerContainer.scrollTo({ left: currentScroll, behavior: "smooth" });
+});
