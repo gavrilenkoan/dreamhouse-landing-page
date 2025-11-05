@@ -570,6 +570,79 @@ h1, h2 {
     }
 }
 
+/* ---------- HOW WE WORK ---------- */
+.how-we-work {
+    max-width: 1500px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 2rem;
+    }
+
+    .work-content { // todo: change proportions 
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 3rem;
+
+        .work-video {
+            position: relative; // todo: add preview image
+            flex: 1;
+
+            .video-modal {
+                position: relative;
+                border-radius: 8px;
+                overflow: hidden;
+
+                iframe {
+                    width: 100%;
+                    aspect-ratio: 16 / 9;
+                    display: block;
+                    max-height: 17rem;
+                }
+            }
+        }
+
+        .work-steps {
+            flex: 1;
+            list-style: none;
+            margin-top: -6.5rem; // todo: fix layout
+
+            li {
+                display: flex;
+                margin-bottom: 1.5rem;
+
+                .step-number {
+                    background: $white-color;
+                    border-radius: 50%;
+                    display: flex;
+                    flex: 0 0 40px;
+                    width: 40px;
+                    height: 40px;
+                    min-width: 40px;
+                    min-height: 40px;
+                    align-items: center;
+                    justify-content: center;
+                    color: $gold-color;
+                    font-weight: 700;
+                    margin-right: 1rem;
+                }
+
+                h4 {
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                }
+
+                p {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+}
+
 
 
 @media screen and (max-width: 674px) {
@@ -774,6 +847,32 @@ h1, h2 {
                         margin-right: 0.1rem;
                     }
                 }
+            }
+        }
+    }
+
+    /* ---------- HOW WE WORK ---------- */
+    .how-we-work {
+        margin: 60px auto;
+
+        h2 {
+            font-size: 25px;
+            margin-bottom: 2rem;
+        }
+
+        .work-content { 
+            flex-direction: column-reverse;
+
+            .work-video {
+                width: 100%;
+
+                .video-modal iframe {
+                    max-height: none;
+                }
+            }
+
+            .work-steps {
+                margin-top: 0; // todo: fix layout
             }
         }
     }
