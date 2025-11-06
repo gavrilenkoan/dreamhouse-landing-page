@@ -643,6 +643,80 @@ h1, h2 {
     }
 }
 
+/* ---------- BANNER ---------- */
+.dream-banner {
+    width: 100%;
+    background-color: $black-color;
+
+    .dream-content {
+        max-width: 1500px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .dream-image {
+        display: flex;
+
+        img {
+            width: 85%;
+            max-width: 400px;
+            position: relative;
+            bottom: 2rem;
+            margin: 0 0 -2rem 2rem;
+        }
+    }
+
+    .dream-right {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+        .dream-text {
+            color: $white-color;
+            align-self: center;
+            padding: 1rem;
+
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+                color: $grey-color;
+            }
+        }
+
+        .dream-btn {
+            flex: 0 0 60px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, $border-color, $grey-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $black-color;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-right: 2rem;
+
+            &:hover {
+                background: linear-gradient(145deg, $grey-color, $border-color);
+            }
+
+            &:active {
+                transform: scale(96%);
+            }
+        }
+    }
+}
+
+
 /* ---------- ARTICLES ---------- */
 .articles-tips {
     padding: 5rem 0 0;
@@ -1146,6 +1220,48 @@ h1, h2 {
 
             .work-steps {
                 margin-top: 0; // todo: fix layout
+            }
+        }
+    }
+
+    /* ---------- BANNER ---------- */
+    .dream-banner {
+
+        .dream-content {
+            flex-direction: column;
+
+            .dream-image {
+                justify-content: center;
+
+                img {
+                    width: 75%;
+                    margin-left: 0;
+                }
+            }
+
+            .dream-right {
+                padding: 0 1rem;
+
+                .dream-text {
+                    padding: 0.5rem 0;
+
+                    h2 {
+                        font-size: 1rem;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    p {
+                        font-size: 0.7rem;
+                        margin-bottom: 0.5rem;
+                    }
+                }
+
+                .dream-btn {
+                    flex: 0 0 40px;
+                    width: 40px;
+                    height: 40px;
+                    margin: 0;
+                }
             }
         }
     }
