@@ -135,3 +135,40 @@ filterButtons.forEach(button => {
         });
     });
 });
+
+async function loadCustomers() {
+    try {
+        const response = await fetch("json/customers.json");
+        const customers = await response.json();
+        const container = document.querySelector(".customers-container");
+
+        customers.forEach(cust => {
+            const card = document.createElement("div");
+            card.classList.add("customer-card");
+            card.innerHTML = `
+                <div class="customer-name">
+                    <img src="${cust.image}" alt="${cust.name}">
+                    <div class="customer-info">
+                        <h3>${cust.name}</h3>
+                        <div class="project">Bought the ${cust.project} project</div>
+                    </div>
+                </div>
+                <p>${cust.text}</p>
+            `;
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error("Error loading customer data:", error);
+    }
+}
+
+loadCustomers();
+
+const customersContainer = document.querySelector(".customers-container");
+document.querySelectorAll(".btnNextCustomers").forEach(el => el.addEventListener("click", () => {
+    customersContainer.scrollBy({ left: customersContainer.offsetWidth * 0.9, behavior: "smooth" });
+})); 
+
+document.querySelectorAll(".btnPrevCustomers").forEach(el => el.addEventListener("click", () => {
+    customersContainer.scrollBy({ left: -customersContainer.offsetWidth * 0.9, behavior: "smooth" });
+}));

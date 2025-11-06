@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Sarah Connor",
+        "project": "Tranquil Haven",
+        "text": "We are thrilled with our new home! The Tranquil Haven project exceeded all our expectations. The spacious rooms, cozy atmosphere, and high-quality materials have made our country house the perfect retreat. Thank you for your professionalism and attention to detail!",
+        "image": "images/customers/sarah.png"
+    },
+    {
+        "name": "Angelina Jolie",
+        "project": "Lakeside Serenity",
+        "text": "Lakeside Serenity is a magnificent project! The house is situated by the lake, and the views are simply stunning. The spacious rooms and modern amenities make living in this house comfortable and enjoyable. A huge thank you for such a wonderful project and impeccable work!",
+        "image": "images/customers/angelina.png"
+    },
+    {
+        "name": "Barbara Streisand",
+        "project": "Sunny Retreat",
+        "text": "The Sunny Retreat project is our dream come true — spacious rooms, a smart layout, and top-notch construction quality. The team worked efficiently, adhering to all deadlines and wishes. We are very satisfied with the result!",
+        "image": "images/customers/barbara.png"
+    }
+]
