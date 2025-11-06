@@ -90,3 +90,48 @@ btnPrev.addEventListener("click", () => {
 
     bestsellerContainer.scrollTo({ left: currentScroll, behavior: "smooth" });
 });
+
+const articlesContainer = document.querySelector(".articles-container");
+const articlesBtnPrev = document.querySelector(".articles-scroll-btn.prev");
+const articlesBtnNext = document.querySelector(".articles-scroll-btn.next");
+
+const articlesScrollAmount = 364;
+let articlesScroll = 0;
+
+articlesBtnNext.addEventListener("click", () => {
+
+    const maxScroll = articlesContainer.scrollWidth - articlesContainer.clientWidth;
+    articlesScroll = Math.min(articlesScroll + articlesScrollAmount, maxScroll);
+
+    articlesContainer.scrollBy({ left: articlesScrollAmount, behavior: "smooth" });
+});
+
+articlesBtnPrev.addEventListener("click", () => {
+
+    let leftScroll = articlesScroll % articlesScrollAmount;
+    articlesScroll = leftScroll ? articlesScroll - leftScroll : articlesScroll - articlesScrollAmount;
+
+    articlesContainer.scrollTo({ left: articlesScroll, behavior: "smooth" });
+});
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const articleCards = document.querySelectorAll(".article-card");
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const category = button.dataset.category;
+
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        // Filter articles
+        articleCards.forEach(card => {
+            if (category === "all" || card.dataset.category === category) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
