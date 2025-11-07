@@ -172,3 +172,10 @@ document.querySelectorAll(".btnNextCustomers").forEach(el => el.addEventListener
 document.querySelectorAll(".btnPrevCustomers").forEach(el => el.addEventListener("click", () => {
     customersContainer.scrollBy({ left: -customersContainer.offsetWidth * 0.9, behavior: "smooth" });
 }));
+
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const item = button.parentElement;
+        item.classList.toggle('active');
+    });
+});
