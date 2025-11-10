@@ -581,18 +581,17 @@ h1, h2 {
         margin-bottom: 2rem;
     }
 
-    .work-content { // todo: change proportions 
+    .work-content {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         gap: 3rem;
 
         .work-video {
-            position: relative; // todo: add preview image
-            flex: 1;
+            width: 40%;
+            max-width: 480px;
 
             .video-modal {
-                position: relative;
                 border-radius: 8px;
                 overflow: hidden;
 
@@ -608,7 +607,8 @@ h1, h2 {
         .work-steps {
             flex: 1;
             list-style: none;
-            margin-top: -6.5rem; // todo: fix layout
+            margin-top: -4.5rem;
+            align-self: center;
 
             li {
                 display: flex;
@@ -1471,9 +1471,11 @@ footer {
 
         .work-content { 
             flex-direction: column-reverse;
+            gap: 1.5rem;
 
             .work-video {
                 width: 100%;
+                align-self: center;
 
                 .video-modal iframe {
                     max-height: none;
@@ -1481,7 +1483,7 @@ footer {
             }
 
             .work-steps {
-                margin-top: 0; // todo: fix layout
+                margin-top: 0;
             }
         }
     }
