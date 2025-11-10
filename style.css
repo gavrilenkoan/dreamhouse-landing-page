@@ -1327,6 +1327,7 @@ footer .footer-container .footer-socials a:hover {
   .articles-container {
     display: flex;
     flex-direction: column;
+    touch-action: auto;
   }
   .article-card {
     flex: 0 0 90%;
