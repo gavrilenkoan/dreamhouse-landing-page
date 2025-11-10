@@ -1436,6 +1436,7 @@ footer {
         .bestsellers-container {
             display: flex;
             flex-direction: column;
+            touch-action: auto;
 
             .bestseller-card {
                 flex: 0 0 auto;
@@ -1555,6 +1556,7 @@ footer {
     .articles-container {
         display: flex;
         flex-direction: column;
+        touch-action: auto;
     }
 
     .article-card {
