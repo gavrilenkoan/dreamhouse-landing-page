@@ -254,3 +254,21 @@ document.querySelectorAll('.faq-question').forEach(button => {
         item.classList.toggle('active');
     });
 });
+
+const faqForm = document.querySelector(".faq-form");
+
+faqForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const email = faqForm.querySelector('input[type="email"]').value.trim();
+    const message = faqForm.querySelector('textarea').value.trim();
+    const accepted = faqForm.querySelector('.form-checkbox').checked;
+
+    const formData = {
+        email: email,
+        message: message,
+        acceptedPrivacyPolicy: accepted
+    };
+
+    console.log("Form submitted:", formData);
+});
