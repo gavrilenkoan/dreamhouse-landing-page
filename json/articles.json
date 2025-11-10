@@ -1,0 +1,26 @@
+[
+    {
+        "title": "MODERN ARCHITECTURAL TRENDS",
+        "text": "Discover the secrets of successful country home design. Learn about modern architectural trends, innovative solutions, and best practices in home design.",
+        "category": "architecture",
+        "image": "images/articles/article1.png"
+    },
+    {
+        "title": "ECO-FRIENDLY MATERIALS FOR HOME CONSTRUCTION",
+        "text": "An overview of eco-friendly materials that will help you build a home without harming the environment.",
+        "category": "architecture",
+        "image": "images/articles/article2.png"
+    },
+    {
+        "title": "IDEAS FOR SETTING UP AN OUTDOOR KITCHEN",
+        "text": "Tips and ideas for creating a cozy and functional outdoor kitchen where you can enjoy cooking in the fresh air.",
+        "category": "interior",
+        "image": "images/articles/article3.png"
+    },
+    {
+        "title": "TRENDS IN COUNTRY HOME DESIGN 2024",
+        "text": "Explore the most current trends in country home design this year. Find out which materials, colors, and solutions are in vogue.",
+        "category": "landscape",
+        "image": "images/articles/article1.png"
+    }
+]

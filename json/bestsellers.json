@@ -1,0 +1,34 @@
+[
+    {
+        "title": "TRANQUIL<br>HAVEN",
+        "price": "$119 900",
+        "square": "134m²",
+        "bedrooms": "3",
+        "bathrooms": "2",
+        "image": "images/bestsellers/bestseller1.jpg"
+    },
+    {
+        "title": "SUNNY<br>RETREAT",
+        "price": "$99 900",
+        "square": "192m²",
+        "bedrooms": "4",
+        "bathrooms": "2",
+        "image": "images/bestsellers/bestseller2.jpg"
+    },
+    {
+        "title": "FOREST<br>OASIS",
+        "price": "$94 500",
+        "square": "98m²",
+        "bedrooms": "1",
+        "bathrooms": "1",
+        "image": "images/bestsellers/bestseller3.jpg"
+    },
+    {
+        "title": "LAKESIDE<br>SERENITY",
+        "price": "$88 900",
+        "square": "128m²",
+        "bedrooms": "3",
+        "bathrooms": "2",
+        "image": "images/bestsellers/bestseller4.jpg"
+    }
+]

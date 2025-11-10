@@ -67,71 +67,145 @@ function showHeroInfo(index) {
     heroPrice.textContent = heroSlidesInfo[index].price;
 }
 
-const bestsellerContainer = document.querySelector(".bestsellers-container");
-const btnPrev = document.querySelector(".scroll-btn.prev");
-const btnNext = document.querySelector(".scroll-btn.next");
+async function loadBestsellers() {
+    try {
+        const response = await fetch("json/bestsellers.json");
+        const bestsellers = await response.json();
+        const container = document.querySelector(".bestsellers-container");
 
-const scrollAmount = 367;
-let currentScroll = 0;
-let lastScroll = scrollAmount;
+        bestsellers.forEach(bestseller => {
+            const card = document.createElement("div");
+            card.classList.add("bestseller-card");
+            card.innerHTML = `
+                <img src="${bestseller.image}">
+                <div class="bestseller-info">
+                    <h3>${bestseller.title}</h3>
+                    <p class="price">${bestseller.price}</p>
+                    <div class="details">
+                        <span><i class="fa-solid fa-ruler-combined"></i>${bestseller.square}</span>
+                        <span><i class="fa-solid fa-bed"></i>${bestseller.bedrooms}</span>
+                        <span><i class="fa-solid fa-bath"></i>${bestseller.bathrooms}</span>
+                    </div>
+                    <a  target="_blank" href="${bestseller.image}"><button class="arrow-btn"><i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: 315deg;"></i></button></a>
+                </div>          
+            `;
+            container.appendChild(card);
+        });
 
-btnNext.addEventListener("click", () => {
+        document.dispatchEvent(new Event("bestsellersLoaded"));
 
-    const maxScroll = bestsellerContainer.scrollWidth - bestsellerContainer.clientWidth;
-    currentScroll = Math.min(currentScroll + scrollAmount, maxScroll);
+    } catch (error) {
+        console.error("Error loading bestsellers data:", error);
+    }
+}
 
-    bestsellerContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+loadBestsellers();
+
+document.addEventListener("bestsellersLoaded", () => {
+    const bestsellerContainer = document.querySelector(".bestsellers-container");
+    const btnPrev = document.querySelector(".scroll-btn.prev");
+    const btnNext = document.querySelector(".scroll-btn.next");
+
+    const scrollAmount = 367;
+    let currentScroll = 0;
+    let lastScroll = scrollAmount;
+
+    btnNext.addEventListener("click", () => {
+
+        const maxScroll = bestsellerContainer.scrollWidth - bestsellerContainer.clientWidth;
+        currentScroll = Math.min(currentScroll + scrollAmount, maxScroll);
+
+        bestsellerContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+
+    btnPrev.addEventListener("click", () => {
+
+        let leftScroll = currentScroll % scrollAmount;
+        currentScroll = leftScroll ? currentScroll - leftScroll : currentScroll - scrollAmount;
+
+        bestsellerContainer.scrollTo({ left: currentScroll, behavior: "smooth" });
+    });
 });
 
-btnPrev.addEventListener("click", () => {
+async function loadArticles() {
+    try {
+        const response = await fetch("json/articles.json");
+        const articles = await response.json();
+        const container = document.querySelector(".articles-container");
 
-    let leftScroll = currentScroll % scrollAmount;
-    currentScroll = leftScroll ? currentScroll - leftScroll : currentScroll - scrollAmount;
+        articles.forEach(article => {
+            const card = document.createElement("div");
+            card.dataset.category = article.category;
+            card.classList.add("article-card");
+            card.innerHTML = `
+                <img src="${article.image}">
+                <div class="article-info">
+                    <div class="articles-text">
+                        <h3>${article.title}</h3>
+                        <p>${article.text}</p>
+                    </div>
+                    <a href="${article.image}" target="_blank"><button class="arrow-btn">Read
+                        <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: 315deg;"></i>
+                    </button></a>
+                </div>
+            `;
+            container.appendChild(card);
+        });
 
-    bestsellerContainer.scrollTo({ left: currentScroll, behavior: "smooth" });
-});
+        document.dispatchEvent(new Event("articlesLoaded"));
+
+    } catch (error) {
+        console.error("Error loading articles data:", error);
+    }
+}
+
+loadArticles();
 
 const articlesContainer = document.querySelector(".articles-container");
 const articlesBtnPrev = document.querySelector(".articles-scroll-btn.prev");
 const articlesBtnNext = document.querySelector(".articles-scroll-btn.next");
 
-const articlesScrollAmount = 364;
-let articlesScroll = 0;
+document.addEventListener("articlesLoaded", () => {
+    // Scroll
+    const articlesScrollAmount = 364;
+    let articlesScroll = 0;
 
-articlesBtnNext.addEventListener("click", () => {
+    articlesBtnNext.addEventListener("click", () => {
 
-    const maxScroll = articlesContainer.scrollWidth - articlesContainer.clientWidth;
-    articlesScroll = Math.min(articlesScroll + articlesScrollAmount, maxScroll);
+        const maxScroll = articlesContainer.scrollWidth - articlesContainer.clientWidth;
+        articlesScroll = Math.min(articlesScroll + articlesScrollAmount, maxScroll);
 
-    articlesContainer.scrollBy({ left: articlesScrollAmount, behavior: "smooth" });
-});
+        articlesContainer.scrollBy({ left: articlesScrollAmount, behavior: "smooth" });
+    });
 
-articlesBtnPrev.addEventListener("click", () => {
+    articlesBtnPrev.addEventListener("click", () => {
 
-    let leftScroll = articlesScroll % articlesScrollAmount;
-    articlesScroll = leftScroll ? articlesScroll - leftScroll : articlesScroll - articlesScrollAmount;
+        let leftScroll = articlesScroll % articlesScrollAmount;
+        articlesScroll = leftScroll ? articlesScroll - leftScroll : articlesScroll - articlesScrollAmount;
 
-    articlesContainer.scrollTo({ left: articlesScroll, behavior: "smooth" });
-});
+        articlesContainer.scrollTo({ left: articlesScroll, behavior: "smooth" });
+    });
 
-const filterButtons = document.querySelectorAll(".filter-btn");
-const articleCards = document.querySelectorAll(".article-card");
+    // Filter
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const articleCards = document.querySelectorAll(".article-card");
+    
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const category = button.dataset.category;
 
-filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        const category = button.dataset.category;
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
 
-        // Update active button
-        filterButtons.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-
-        // Filter articles
-        articleCards.forEach(card => {
-            if (category === "all" || card.dataset.category === category) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
+            // Filter articles
+            articleCards.forEach(card => {
+                if (category === "all" || card.dataset.category === category) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         });
     });
 });
