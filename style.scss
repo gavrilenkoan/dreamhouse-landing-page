@@ -814,6 +814,10 @@ h1, h2 {
         &::-webkit-scrollbar {
             display: none;
         }
+
+        @media screen and (max-width: 674px) {
+            touch-action: auto;
+        }
     }
 
     .article-card {
@@ -1556,7 +1560,6 @@ footer {
     .articles-container {
         display: flex;
         flex-direction: column;
-        touch-action: auto;
     }
 
     .article-card {
