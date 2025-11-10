@@ -139,6 +139,7 @@ async function loadArticles() {
             card.classList.add("article-card");
             card.innerHTML = `
                 <img src="${article.image}">
+                <h3 class="mobile-title">${article.title}</h3>
                 <div class="article-info">
                     <div class="articles-text">
                         <h3>${article.title}</h3>
