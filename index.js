@@ -270,5 +270,6 @@ faqForm.addEventListener("submit", (e) => {
         acceptedPrivacyPolicy: accepted
     };
 
+    faqForm.reset();
     console.log("Form submitted:", formData);
 });
