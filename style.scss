@@ -29,7 +29,7 @@ $grey-color: #A6ADB1;
 }
 
 html {
-    font-family: Avenir;
+    font-family: Avenir, 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
 }
 
@@ -40,7 +40,7 @@ body {
 }
 
 h1, h2 {
-    font-family: Avenir;
+    font-family: Avenir, 'Times New Roman', Times, serif;
     font-weight: 900;
 }
 
@@ -103,7 +103,6 @@ h1, h2 {
 
 .logo {
     width: 30%;
-    font-family: Avenir;
     font-weight: 700;
     font-size: 1.5rem;
     text-align: center;
@@ -996,7 +995,7 @@ h1, h2 {
                 justify-content: space-between;
                 align-items: center;
                 text-align: left;
-                font-family: Avenir;
+                font-family: Avenir, 'Times New Roman', Times, serif;
                 font-size: 1rem;
                 padding: 1rem 0;
                 color: $black-color;
@@ -1081,7 +1080,7 @@ h1, h2 {
             .faq-text-form {
                 input,
                 textarea {
-                    font-family: Avenir;
+                    font-family: Avenir, 'Times New Roman', Times, serif;
                     width: 100%;
                     padding: 0.8rem 1rem;
                     margin-bottom: 1rem;
@@ -1092,7 +1091,7 @@ h1, h2 {
 
                     &::placeholder {
                         color: $grey-color;
-                        font-family: Avenir;
+                        font-family: Avenir, 'Times New Roman', Times, serif;
                         opacity: 1;
                     }
 
