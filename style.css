@@ -19,7 +19,7 @@
 }
 
 html {
-  font-family: Avenir;
+  font-family: Avenir, "Times New Roman", Times, serif;
   scroll-behavior: smooth;
 }
 
@@ -30,7 +30,7 @@ body {
 }
 
 h1, h2 {
-  font-family: Avenir;
+  font-family: Avenir, "Times New Roman", Times, serif;
   font-weight: 900;
 }
 
@@ -68,7 +68,6 @@ h1, h2 {
 
 .logo {
   width: 30%;
-  font-family: Avenir;
   font-weight: 700;
   font-size: 1.5rem;
   text-align: center;
@@ -920,7 +919,7 @@ h1, h2 {
   justify-content: space-between;
   align-items: center;
   text-align: left;
-  font-family: Avenir;
+  font-family: Avenir, "Times New Roman", Times, serif;
   font-size: 1rem;
   padding: 1rem 0;
   color: #353A45;
@@ -990,7 +989,7 @@ h1, h2 {
 }
 .faq .faq-right .faq-form .faq-text-form input,
 .faq .faq-right .faq-form .faq-text-form textarea {
-  font-family: Avenir;
+  font-family: Avenir, "Times New Roman", Times, serif;
   width: 100%;
   padding: 0.8rem 1rem;
   margin-bottom: 1rem;
@@ -1001,13 +1000,13 @@ h1, h2 {
 }
 .faq .faq-right .faq-form .faq-text-form input::-moz-placeholder, .faq .faq-right .faq-form .faq-text-form textarea::-moz-placeholder {
   color: #A6ADB1;
-  font-family: Avenir;
+  font-family: Avenir, "Times New Roman", Times, serif;
   opacity: 1;
 }
 .faq .faq-right .faq-form .faq-text-form input::placeholder,
 .faq .faq-right .faq-form .faq-text-form textarea::placeholder {
   color: #A6ADB1;
-  font-family: Avenir;
+  font-family: Avenir, "Times New Roman", Times, serif;
   opacity: 1;
 }
 .faq .faq-right .faq-form .faq-text-form input:focus,
@@ -1327,7 +1326,6 @@ footer .footer-container .footer-socials a:hover {
   .articles-container {
     display: flex;
     flex-direction: column;
-    touch-action: auto;
   }
   .article-card {
     flex: 0 0 90%;
