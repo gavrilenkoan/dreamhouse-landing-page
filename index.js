@@ -108,7 +108,6 @@ document.addEventListener("bestsellersLoaded", () => {
 
     const scrollAmount = 367;
     let currentScroll = 0;
-    let lastScroll = scrollAmount;
 
     btnNext.addEventListener("click", () => {
 
@@ -232,6 +231,9 @@ async function loadCustomers() {
             `;
             container.appendChild(card);
         });
+
+        document.dispatchEvent(new Event("customersLoaded"));
+
     } catch (error) {
         console.error("Error loading customer data:", error);
     }
@@ -239,14 +241,16 @@ async function loadCustomers() {
 
 loadCustomers();
 
-const customersContainer = document.querySelector(".customers-container");
-document.querySelectorAll(".btnNextCustomers").forEach(el => el.addEventListener("click", () => {
-    customersContainer.scrollBy({ left: customersContainer.offsetWidth * 0.9, behavior: "smooth" });
-})); 
+document.addEventListener("customersLoaded", () => {
+    const customersContainer = document.querySelector(".customers-container");
+    document.querySelectorAll(".btnNextCustomers").forEach(el => el.addEventListener("click", () => {
+        customersContainer.scrollBy({ left: customersContainer.offsetWidth * 0.9, behavior: "smooth" });
+    })); 
 
-document.querySelectorAll(".btnPrevCustomers").forEach(el => el.addEventListener("click", () => {
-    customersContainer.scrollBy({ left: -customersContainer.offsetWidth * 0.9, behavior: "smooth" });
-}));
+    document.querySelectorAll(".btnPrevCustomers").forEach(el => el.addEventListener("click", () => {
+        customersContainer.scrollBy({ left: -customersContainer.offsetWidth * 0.9, behavior: "smooth" });
+    }));
+});
 
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
