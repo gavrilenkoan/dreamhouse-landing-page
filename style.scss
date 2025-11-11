@@ -44,6 +44,29 @@ h1, h2 {
     font-weight: 900;
 }
 
+@mixin buttons-container {
+    display: flex;
+    gap: 0.8rem;
+}
+
+@mixin buttons {
+    width: 50px;
+    height: 50px;
+    border: solid 1px $border-color;
+    border-radius: 50%;
+    background-color: $white-color;
+    color: $gold-color;
+    cursor: pointer;
+
+    &:hover {
+        color: $black-color;
+    }
+
+    &:active {
+        transform: scale(96%);
+    }
+}
+
 /* ---------- NAVBAR ---------- */
 .navbar {
     z-index: 2;
@@ -236,29 +259,16 @@ h1, h2 {
 .slider-buttons-container {
     width: 100%;
     height: 30%;
-    display: flex;
+    @include buttons-container;
     align-items: center;
     justify-content: center;
 }
 
 .slider-button {
+    @include buttons;
     width: 4rem;
     height: 4rem;
-    border: solid 1px $border-color;
-    border-radius: 50%;
-    background-color: $white-color;
-    color: $gold-color;
     font-size: 1rem;
-    margin: 0.5rem;
-    cursor: pointer;
-
-    &:hover {
-        color: $black-color;
-    }
-
-    &:active {
-        transform: scale(96%);
-    }
 }
 
 .details {
@@ -341,7 +351,6 @@ h1, h2 {
 
     .about-title {
         margin: 0 2rem;
-        font-size: 32px;
         margin-bottom: 16px;
     }
 
@@ -447,37 +456,16 @@ h1, h2 {
     .bestsellers-header {
         max-width: 1500px;
         margin: 0 auto;
+        padding: 0 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        h2 {
-            font-size: 32px;
-            color: $black-color;
-            margin: 0 2rem 1.5rem;
-        }
-
         .bestsellers-buttons {
-            display: flex;
-            gap: 0.8rem;
-            margin: 0 2rem 1.5rem;
+            @include buttons-container;
 
             .scroll-btn {
-                width: 50px;
-                height: 50px;
-                border-radius: 25px;
-                border: 1px solid $border-color;
-                background-color: $white-color;
-                color: $gold-color;
-                cursor: pointer;
-
-                &:hover {
-                    color: $black-color;
-                }
-
-                &:active {
-                    transform: scale(96%);
-                }
+                @include buttons;
             }
         }
     }
@@ -489,7 +477,7 @@ h1, h2 {
         overflow-x: hidden;
         touch-action: none;
         gap: 2rem;
-        padding: 0 2rem 1rem;
+        padding: 1.5rem 2rem;
 
         &::-webkit-scrollbar {
             display: none;
@@ -577,7 +565,6 @@ h1, h2 {
     padding: 0 2rem;
 
     h2 {
-        font-size: 32px;
         margin-bottom: 2rem;
     }
 
@@ -692,7 +679,7 @@ h1, h2 {
             align-self: center;
             padding: 1rem;
 
-            h2 {
+            h3 {
                 font-size: 1.3rem;
                 margin-bottom: 0.5rem;
             }
@@ -745,141 +732,115 @@ h1, h2 {
             align-items: center;
             margin: 0 2rem;
 
-            h2 {
-                font-size: 32px;
-                color: $black-color;
-            }
-
             .articles-buttons {
-                display: flex;
-                gap: 0.8rem;
+                @include buttons-container;
 
                 .articles-scroll-btn {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 25px;
-                    border: 1px solid $border-color;
-                    background-color: $white-color;
+                    @include buttons;
+                }
+            }
+        }
+
+        .articles-filters {
+        display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem;
+
+            .filter-btn {
+                padding: 0.5rem 1.5rem;
+                background-color: $white-color;
+                border: 1px solid $border-color;
+                border-radius: 25px;
+                color: $grey-color;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &.active, &:hover {
+                    background-color: $light-gold-color;
                     color: $gold-color;
+                    border: 1px solid $gold-color;
+                }
+            }
+        }
+
+        .articles-container {
+            display: flex;
+            overflow-x: hidden;
+            touch-action: none;
+            gap: 1.5rem;
+            padding: 2rem;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            @media screen and (max-width: 674px) {
+                touch-action: auto;
+            }
+        }
+
+        .article-card {
+            flex: 0 0 340px;
+            background-color: $background-color;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+            }
+
+            .mobile-title {
+                display: none;
+
+                @media screen and (max-width: 674px) {
+                    display: block;
+                }
+            }
+
+            .article-info {
+                padding: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .articles-text {
+                    h3 {
+                        font-size: 1.2rem;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    p {
+                        font-size: 0.95rem;
+                        color: $grey-color;
+                        margin-bottom: 1rem;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                .arrow-btn {
+                    border: none;
+                    color: $gold-color;
+                    background: none;
+                    font-size: 1rem;
                     cursor: pointer;
+                    transition: background-color 0.3s ease;
 
                     &:hover {
                         color: $black-color;
                     }
-
-                    &:active {
-                        transform: scale(96%);
-                    }
-                }
-            }
-        }
-    }
-}
-
-.articles-section {
-    max-width: 1500px;
-    margin: 0 auto;
-    background-color: $white-color;
-
-    .articles-filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin: 2rem;
-
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            background-color: $white-color;
-            border: 1px solid $border-color;
-            border-radius: 25px;
-            color: $grey-color;
-            cursor: pointer;
-            transition: all 0.3s ease;
-
-            &.active, &:hover {
-                background-color: $light-gold-color;
-                color: $gold-color;
-                border: 1px solid $gold-color;
-            }
-        }
-    }
-
-    .articles-container {
-        display: flex;
-        overflow-x: hidden;
-        touch-action: none;
-        gap: 1.5rem;
-        padding: 2rem;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-
-        @media screen and (max-width: 674px) {
-            touch-action: auto;
-        }
-    }
-
-    .article-card {
-        flex: 0 0 340px;
-        background-color: $background-color;
-        border-radius: 12px;
-        overflow: hidden;
-        margin-bottom: 3rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-        &:hover {
-            transform: translateY(-5px);
-        }
-
-        img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .mobile-title {
-            display: none;
-
-            @media screen and (max-width: 674px) {
-                display: block;
-            }
-        }
-
-        .article-info {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            .articles-text {
-                h3 {
-                    font-size: 1.2rem;
-                    margin-bottom: 0.5rem;
-                }
-
-                p {
-                    font-size: 0.95rem;
-                    color: $grey-color;
-                    margin-bottom: 1rem;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-            }
-
-            .arrow-btn {
-                border: none;
-                color: $gold-color;
-                background: none;
-                font-size: 1rem;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-
-                &:hover {
-                    color: $black-color;
                 }
             }
         }
@@ -900,31 +861,13 @@ h1, h2 {
         justify-content: space-between;
         align-items: center;
         margin: 0 2rem 2rem;
-        
-        h2 {
-            font-size: 2rem;
-        }
 
         .customers-buttons {
-            display: flex;
-            gap: 0.8rem;
+            @include buttons-container;
 
             .customers-scroll-btn {
-                width: 50px;
-                height: 50px;
-                border-radius: 25px;
-                border: 1px solid $border-color;
+                @include buttons;
                 background-color: $background-color;
-                color: $gold-color;
-                cursor: pointer;
-
-                &:hover {
-                    color: $black-color;
-                }
-
-                &:active {
-                    transform: scale(96%);
-                }
             }
 
             @media screen and (max-width: 674px) {
@@ -999,16 +942,12 @@ h1, h2 {
 
     .slider-button {
         display: none;
-        border: 1px solid $border-color;
-        background: $white-color;
-        border-radius: 50%;
+        @include buttons;
         width: 60px;
         height: 60px;
-        cursor: pointer;
         align-items: center;
         justify-content: center;
         position: absolute;
-        transition: background-color 0.3s ease;
 
         &.prev {
             left: -20px;
@@ -1026,7 +965,6 @@ h1, h2 {
     background-color: $white-color;
 
     h2 {
-        font-size: 2rem;
         max-width: 1500px;
         margin: 0 auto 2rem;
     }
@@ -1392,10 +1330,6 @@ footer {
     .about-us {
         padding: 60px 0;
 
-        .about-title {
-            font-size: 25px;
-        }
-
         .features {
             grid-template-columns: repeat(1, 1fr);
         }
@@ -1427,10 +1361,6 @@ footer {
 
         .bestsellers-header {
             justify-content: left;
-            
-            h2 {
-                font-size: 25px;
-            }
 
             .bestsellers-buttons {
                 display: none;
@@ -1470,7 +1400,6 @@ footer {
         margin: 60px auto;
 
         h2 {
-            font-size: 25px;
             margin-bottom: 2rem;
         }
 
@@ -1519,7 +1448,7 @@ footer {
                 .dream-text {
                     padding: 0.5rem 0;
 
-                    h2 {
+                    h3 {
                         font-size: 1rem;
                         margin-bottom: 0.5rem;
                     }
@@ -1546,10 +1475,6 @@ footer {
 
         .articles-section .articles-header {
             justify-content: left;
-            
-            h2 {
-                font-size: 25px;
-            }
 
             .articles-buttons {
                 display: none;
@@ -1611,7 +1536,6 @@ footer {
         padding: 60px 0;
 
         h2 {
-            font-size: 25px;
             padding: 0 2rem;
         }
 
@@ -1658,5 +1582,14 @@ footer {
             font-size: 1.5rem;
             padding: 1.5rem 0;
         }
+    }
+}
+
+h2 {
+    font-size: 32px;
+    color: $black-color;
+
+    @media screen and (max-width: 674px) {
+        font-size: 21px;
     }
 }
